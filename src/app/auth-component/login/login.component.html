@@ -1,1 +1,28 @@
-<p>login works!</p>
+<div class="signup-container">
+    <mat-card class="signup-card">
+        <mat-card-content>
+        <h2 class="signup-caption">
+          <form [formGroup]="loginForm">
+              <div class="form-input">
+                  <mat-form-field>
+                    <mat-label>Email</mat-label>
+                 
+                <input matInput placeholder="Enter your email" formControlName="email" type="email" required />
+            </mat-form-field>
+              </div>
+        
+            <div class="form-input">
+                <mat-form-field>
+                  <mat-label>Password</mat-label>
+             
+              <input matInput placeholder="Enter your password" formControlName="password" type="password" required />
+            </mat-form-field>
+            </div>
+         
+            <button mat-raised-button color="primary" class="signup-button" (click)="login()">Login</button>
+          </form>
+        </h2>                                                          
+        </mat-card-content>
+    </mat-card>
+</div>
+             
