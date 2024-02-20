@@ -36,6 +36,8 @@ import {MatBadgeModule} from '@angular/material/badge';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatStepperModule} from '@angular/material/stepper';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
 /** Http interceptor providers in outside-in order */
 
 
@@ -80,6 +82,7 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatTooltipModule,
     MatProgressBarModule,
     MatStepperModule,
+    MatFormFieldModule
    
 
   ],
@@ -117,7 +120,8 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatBadgeModule,
     MatTooltipModule,
     MatProgressBarModule,
-    MatStepperModule
+    MatStepperModule,
+    MatFormFieldModule
 
   ],
  
