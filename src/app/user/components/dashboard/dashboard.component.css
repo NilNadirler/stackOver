@@ -1,0 +1,48 @@
+.container{
+    min-height: 91vh;
+    padding: 30px;
+}
+
+.empty-message{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    margin-top: 40px;
+    text-align: center;
+
+  
+
+}
+mat-icon{
+    font-size:64px;
+    margin-bottom: 10px;
+}
+p{
+    font-size: 18px;
+}
+
+.child{
+    margin-bottom: 20px;
+}
+
+.radio{
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 20px;
+}
+
+.pagination{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.tags-container{
+    margin-top:10px
+}
+
+.mat-chip-list{
+    overflow-x:auto;
+    white-space: nowrap;
+}

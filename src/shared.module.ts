@@ -13,7 +13,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatProgressSpinnerModule, MatSpinner} from '@angular/material/progress-spinner';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {DatePipe} from '@angular/common';
@@ -37,6 +37,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatChipEditedEvent, MatChipInputEvent} from '@angular/material/chips';
 
 /** Http interceptor providers in outside-in order */
 
@@ -82,7 +83,14 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatTooltipModule,
     MatProgressBarModule,
     MatStepperModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatProgressSpinnerModule,
+    ReactiveFormsModule,
+    MatChipsModule,
+    MatProgressSpinnerModule,
+
+ 
+    
    
 
   ],
@@ -121,7 +129,13 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatTooltipModule,
     MatProgressBarModule,
     MatStepperModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatProgressSpinnerModule,
+    MatStepperModule,
+    MatChipsModule,
+    MatProgressSpinnerModule
+    
 
   ],
  

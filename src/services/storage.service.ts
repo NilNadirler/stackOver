@@ -29,6 +29,9 @@ export class StorageService {
     }
     return true;
   }
-
+  
+  static getUserId(){
+    return localStorage.getItem("userId")
+  }
 
 }

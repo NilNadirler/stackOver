@@ -1,0 +1,29 @@
+
+.parent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.child{
+    max-width: 300px;
+    width: 90%;
+    text-align: center;
+    background-color: #f0f2f5;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px;
+}
+
+.form-input{
+    margin-bottom: 13px;
+}
+
+.question-caption{
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.example-chip-list {
+    width: 100%;
+  }
