@@ -13,7 +13,7 @@
              <div #questionList>
                <div class="child"  *ngFor="let question of questions">
                    <h2 class="question-title">
-                     {{question.title}}
+                      <a routerLink="/user/question/{{question.id}}">{{question.title}}</a>
                    </h2>
                    <div class="question-content">
                        <p>{{question.body}}</p>

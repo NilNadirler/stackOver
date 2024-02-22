@@ -20,9 +20,7 @@ export class DashboardComponent {
 
   getAllQuestions(){
     this.service.getAllQuestion(this.pageNum).subscribe(res=>{
-       console.log(res)
        this.questions= res.questionDtoList;
-       console.log(this.questions)
        this.total=res.totalPages*5
     })
   }

@@ -27,6 +27,13 @@ export class QuestionService {
       })
   }
 
+  getQuestionById(questionId:number):Observable<any>{
+    console.log(questionId)
+       return this.http.get<[]>(BASIC_URL+`/${questionId}`,{
+          headers:this.createAuthorizationHeader()
+       })
+  }
+
   private createAuthorizationHeader():HttpHeaders{
     return new HttpHeaders().set(
       "Authorization", "Bearer " +StorageService.getToken()

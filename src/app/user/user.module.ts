@@ -10,12 +10,14 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ViewQuestionComponent } from './components/view-question/view-question.component';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    PostQuestionComponent
+    PostQuestionComponent,
+    ViewQuestionComponent
   ],
   imports: [
     CommonModule,
