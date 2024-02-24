@@ -1,4 +1,4 @@
-<div class="question-card" style="margin-top:30px">
+<div class="question-card" style="margin-top:30px" *ngIf="question">
     <h2>{{question.title}}</h2>
     <p>Asked On: <b>{{question.date | date:'EEEE,MMMM d,y'}}</b> by <b>{{question.userName}}</b></p>
     <div class="question-body">
@@ -8,6 +8,18 @@
                 <mat-chip *ngFor="let tag of question.tags" >{{tag}}</mat-chip>
             </mat-chip-listbox>
         </div>
+    </div>
+</div>
+
+<div *ngFor="let answer of answers; let i=index" class="answer-card" style="margin-top:30px">
+ 
+    <h2>Answers</h2>
+    <div>
+        <div>
+            <h5>Answered by: <b>{{answer.username}}</b> -Answer on: <b>{{answer.createdDate }}</b></h5>
+        </div>
+        <p>{{answer.body}}</p>
+        <div *ngIf="answer.convertedImg"><img [src]="answer.convertedImg"></div>
     </div>
 </div>
 
@@ -22,6 +34,13 @@
                   <mat-label>Subject</mat-label>
                   <textarea matInput rows="2" placeholder="Solution..." formControlName="body"></textarea>
                </mat-form-field>
+           </div>
+           <div class="form-field">
+               <div class="image-preview" >
+                   <img [src]="imagePreview" height="50" alt="Image Preview" *ngIf="selectedFile">
+                  
+               </div>
+               <input id="file" type="file" accept="image/png,image/jpeg" (change)="onFileSelected($event)"/>
            </div>
            <button mat-raised-button color="accent">Post Your Answer</button>
        </form>

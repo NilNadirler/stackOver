@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { StorageService } from 'src/services/storage.service';
 
 
-const BASIC_URL ="http://localhost:9091/api/answer"
+const BASIC_URL ="http://localhost:9091/api/"
 @Injectable({
   providedIn: 'root'
 })
@@ -16,7 +16,13 @@ export class AnswerService {
 
   postAnswer(answerDto:any):Observable<any>{
     console.log(answerDto)
-    return this.http.post<[]>(BASIC_URL,answerDto,{
+    return this.http.post<[]>(BASIC_URL+"answer",answerDto,{
+      headers:this.createAuthorizationHeader()
+    })
+  }
+
+  postAnswerImage(file:any, answerId:number):Observable<any>{
+    return this.http.post<[]>(BASIC_URL+`image/${answerId}`,file,{
       headers:this.createAuthorizationHeader()
     })
   }

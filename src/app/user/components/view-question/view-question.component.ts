@@ -14,7 +14,11 @@ export class ViewQuestionComponent {
 
   questionId:number= this.activatedRoute.snapshot.params["questionId"]
   question:any;
-  validateForm:FormGroup
+  validateForm:FormGroup;
+  imagePreview:string | ArrayBuffer | null;
+  selectedFile:File | null
+  formData:FormData= new FormData();
+  answers=[];
 
   constructor(private service:QuestionService, private activatedRoute:ActivatedRoute,
     private answerService:AnswerService, private fb:FormBuilder){}
@@ -30,18 +34,44 @@ export class ViewQuestionComponent {
 
   getQuestionById(){
     this.service.getQuestionById(this.questionId).subscribe(res=>{
+      console.log(res)
       this.question= res.questionDto
-      console.log(this.question)
-    })
+      res.answerDtoList.forEach(element => {
+          if(element.file !=null){
+            element.convertedImg = 'data:image/jpeg;base64,'+ element.file.data;
+          }
+       this.answers.push(element)
+
+      }); 
+      })
+    
+    
   }
 
   addAnswer(){
     const data = this.validateForm.value;
     data.questionId= this.questionId;
     data.userId= StorageService.getUserId()
+    this.formData.append("multipartFile", this.selectedFile)
     this.answerService.postAnswer(data).subscribe(res=>{
+      this.answerService.postAnswerImage(this.formData,res.id).subscribe((res)=>{
+        console.log("Post Answer Image API", res)
+      })
+      console.log("Post Answer API response",res)
     })
-    this.validateForm.reset();
+    }
+
+    onFileSelected(event:any){
+      this.selectedFile= event.target.files[0];
+      this.previewImage();
+    }
+
+    previewImage(){
+      const reader= new FileReader();
+      reader.onload= ()=>{
+        this.imagePreview= reader.result;
+      };
+      reader.readAsDataURL(this.selectedFile);
     }
   }
 
