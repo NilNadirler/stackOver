@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { StorageService } from 'src/services/storage.service';
 import { AnswerService } from '../../user-services/answer.service';
 import { QuestionService } from '../../user-services/question.service';
@@ -21,7 +22,7 @@ export class ViewQuestionComponent {
   answers=[];
 
   constructor(private service:QuestionService, private activatedRoute:ActivatedRoute,
-    private answerService:AnswerService, private fb:FormBuilder){}
+    private answerService:AnswerService, private fb:FormBuilder,private toastr:ToastrService){}
   
   ngOnInit(){
    
@@ -30,12 +31,14 @@ export class ViewQuestionComponent {
     })
 
     this.getQuestionById()
+ 
   }
 
   getQuestionById(){
     this.service.getQuestionById(this.questionId).subscribe(res=>{
       console.log(res)
       this.question= res.questionDto
+      console.log(this.question)
       res.answerDtoList.forEach(element => {
           if(element.file !=null){
             element.convertedImg = 'data:image/jpeg;base64,'+ element.file.data;
@@ -72,6 +75,22 @@ export class ViewQuestionComponent {
         this.imagePreview= reader.result;
       };
       reader.readAsDataURL(this.selectedFile);
+    }
+
+    addVote(voteType:string){
+      const data={
+        voteType: voteType,
+        userId: StorageService.getUserId(),
+        questionId:this.questionId
+      }
+
+      this.service.addVoteToQuestion(data).subscribe((res)=>{
+        if(res.id !=null){
+          this.toastr.success("Vote added successfully")
+        }else{
+          this.toastr.error("Somethin went wrong")
+        }
+      })
     }
   }
 

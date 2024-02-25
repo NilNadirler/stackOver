@@ -1,6 +1,15 @@
 <div class="question-card" style="margin-top:30px" *ngIf="question">
     <h2>{{question.title}}</h2>
     <p>Asked On: <b>{{question.date | date:'EEEE,MMMM d,y'}}</b> by <b>{{question.userName}}</b></p>
+    <div class="vote-section">
+        <div class="arrow-icon" (click)="addVote('UPVOTE')">
+            <i class="material-icons">keyboard_arrow_up</i>
+        </div>
+        <div class="vote-count">{{question.voteCount}}</div>
+        <div class="arrow-icon" (click)="addVote('DOWNVOTE')">
+            <i class="material-icons">keyboard_arrow_down</i>
+        </div>
+    </div>
     <div class="question-body">
         <p>{{question.body}}</p>
         <div class="tag-list">
@@ -16,7 +25,7 @@
     <h2>Answers</h2>
     <div>
         <div>
-            <h5>Answered by: <b>{{answer.username}}</b> -Answer on: <b>{{answer.createdDate }}</b></h5>
+            <h5>Answered by: <b>{{answer.username}}</b> -Answer on: <b>{{answer.createdDate | date:'dd,MM,YYYY' }}</b></h5>
         </div>
         <p>{{answer.body}}</p>
         <div *ngIf="answer.convertedImg"><img [src]="answer.convertedImg"></div>

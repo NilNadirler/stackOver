@@ -32,6 +32,18 @@ export class QuestionService {
           headers:this.createAuthorizationHeader()
        })
   }
+  getQuestionByUserId(pageNumber:number):Observable<any>{
+    return this.http.get<[]>(BASIC_URL+`/${StorageService.getUserId()}/${pageNumber}`,{
+       headers:this.createAuthorizationHeader()
+    })
+}
+    
+   addVoteToQuestion(voteQuestionDto:any):Observable<any>{
+     console.log(voteQuestionDto)
+     return this.http.post<[]>(BASIC_URL+"/vote",voteQuestionDto,{
+      headers:this.createAuthorizationHeader()
+     })
+   }
 
   private createAuthorizationHeader():HttpHeaders{
     return new HttpHeaders().set(
